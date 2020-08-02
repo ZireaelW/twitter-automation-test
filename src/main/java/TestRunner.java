@@ -9,4 +9,4 @@ import cucumber.api.junit.Cucumber;
         glue = {"test.automation.twitter"}
 )
 
-public class MyRunner {}
+public class TestRunner {}
