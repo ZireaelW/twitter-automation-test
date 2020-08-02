@@ -51,7 +51,7 @@
                 <version>2.21.0</version>
                 <configuration>
                     <includes>
-                        <include>MyRunner.java</include>
+                        <include>TestRunner.java</include>
                     </includes>
                 </configuration>
             </plugin>
