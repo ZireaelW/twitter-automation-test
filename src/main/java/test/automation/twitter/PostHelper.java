@@ -18,10 +18,13 @@ public class PostHelper {
     }
 
     public void navigate_to_home_page() {
+        WebDriverWait wait = new WebDriverWait(this.driver, 10);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[@data-testid=\"AppTabBar_Home_Link\"]")));
+
         this.driver.findElement(By.xpath("//a[@data-testid=\"AppTabBar_Home_Link\"]")).click();
 
-        WebDriverWait wait = new WebDriverWait(this.driver, 10);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@data-testid=\"tweetTextarea_0\"]")));
+        WebDriverWait wait2 = new WebDriverWait(this.driver, 10);
+        wait2.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@data-testid=\"tweetTextarea_0\"]")));
     }
 
     public void enter_tweet_text_as(String text) {
