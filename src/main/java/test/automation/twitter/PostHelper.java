@@ -3,6 +3,7 @@ package test.automation.twitter;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -18,13 +19,13 @@ public class PostHelper {
 
     public void navigate_to_home_page() {
         this.driver.findElement(By.xpath("//a[@data-testid=\"AppTabBar_Home_Link\"]")).click();
+
+        WebDriverWait wait = new WebDriverWait(this.driver, 10);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@data-testid=\"tweetTextarea_0\"]")));
     }
 
     public void enter_tweet_text_as(String text) {
         if (text.equalsIgnoreCase("with")) {
-            WebDriverWait wait = new WebDriverWait(this.driver, 10);
-            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@data-testid=\"tweetTextarea_0\"]")));
-
             this.driver.findElement(By.xpath("//div[@data-testid=\"tweetTextarea_0\"]")).sendKeys(this.uuid);
         }
     }
@@ -45,16 +46,15 @@ public class PostHelper {
         }
     }
 
-    public void tweet_should_be_posted() {
+    public void tweet_should_be_posted(String result) {
         WebDriverWait wait = new WebDriverWait(this.driver, 15);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@data-testid=\"tweetButtonInline\"]")));
 
         String postText = this.driver.findElement(By.xpath("//div[@data-testid=\"tweet\"]/div[2]/div[2]/div/div/span")).getText();
-        System.out.println(postText);
-        if (this.uuid.equalsIgnoreCase(postText)) {
-            Assert.assertEquals(this.uuid, postText);
-        } else {
+        if (result.equalsIgnoreCase("shouldn't")) {
             Assert.assertNotEquals(this.uuid, postText);
+        } else {
+            Assert.assertEquals(this.uuid, postText);
         }
     }
 }

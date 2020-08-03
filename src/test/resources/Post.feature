@@ -6,9 +6,10 @@ Feature: Post Text And Image
     When I enter tweet "<text>" text
     And I enter tweet "<image>" image
     And I send tweet "<text>" text and "<image>" image
-    Then Tweet should be posted
+    Then Tweet "<result>" be posted
 
     Examples:
-      | username     | password  | text | image   |
-      | 082139805022 | ririn1212 | with | with    |
-      | 082139805022 | ririn1212 | with | without |
+      | username     | password  | text    | image   | result    |
+      | 082139805022 | ririn1212 | with    | with    | should    |
+      | 082139805022 | ririn1212 | with    | without | should    |
+      | 082139805022 | ririn1212 | without | without | shouldn't |

@@ -41,8 +41,8 @@ public class Post {
         postHelper.click_tweet_button(image);
     }
 
-    @Then("^Tweet should be posted$")
-    public void tweet_should_be_posted(){
-        postHelper.tweet_should_be_posted();
+    @Then("^Tweet \"(.*?)\" be posted$")
+    public void tweet_should_be_posted(String result){
+        postHelper.tweet_should_be_posted(result);
     }
 }
