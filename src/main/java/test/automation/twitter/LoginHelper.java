@@ -1,5 +1,6 @@
 package test.automation.twitter;
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -41,9 +42,13 @@ public class LoginHelper {
         this.driver.findElement(By.xpath("//div[@data-testid=\"LoginForm_Login_Button\"]")).click();
     }
 
-    public void login_should_be_successful() {
+    public void login_should_be_successful(String result) {
         String url = this.driver.getCurrentUrl();
-        assertEquals("Login Success", url, "https://twitter.com/twitter");
-        assertEquals("Success", url);
+
+        if (result.equalsIgnoreCase("Failed")) {
+            Assert.assertNotEquals("https://twitter.com/twitter", url);
+        } else if (result.equalsIgnoreCase("Success")) {
+            Assert.assertEquals("https://twitter.com/twitter", url);
+        }
     }
 }

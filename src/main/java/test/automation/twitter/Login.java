@@ -36,8 +36,8 @@ public class Login {
         loginHelper.click_login_botton();
     }
 
-    @Then("^Login should be successful$")
-    public void login_should_be_successful() {
-        loginHelper.login_should_be_successful();
+    @Then("^Login should be \"(.*?)\"$")
+    public void login_should_be_successful(String result) {
+        loginHelper.login_should_be_successful(result);
     }
 }
