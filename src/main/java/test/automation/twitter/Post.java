@@ -26,23 +26,23 @@ public class Post {
         postHelper.navigate_to_home_page();
     }
 
-    @When("^I enter tweet text as \"(.*?)\"$")
+    @When("^I enter tweet \"(.*?)\" text$")
     public void i_enter_tweet_text_as(String text) {
         postHelper.enter_tweet_text_as(text);
     }
 
-    @When("^I enter tweet image as \"(.*?)\"$")
+    @When("^I enter tweet \"(.*?)\" image$")
     public void i_enter_tweet_image_as(String image) {
         postHelper.enter_tweet_image_as(image);
     }
 
-    @When("^I click tweet button$")
-    public void i_click_tweet_button() {
-        postHelper.click_tweet_button();
+    @When("^I send tweet \"(.*?)\" text and \"(.*?)\" image$")
+    public void i_click_tweet_button(String text, String image) {
+        postHelper.click_tweet_button(image);
     }
 
     @Then("^Tweet should be posted$")
-    public void tweet_should_be_posted() {
+    public void tweet_should_be_posted(){
         postHelper.tweet_should_be_posted();
     }
 }
