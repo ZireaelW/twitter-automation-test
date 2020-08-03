@@ -8,7 +8,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class Login {
     WebDriver driver = new ChromeDriver();
-    ;
     LoginHelper loginHelper = new LoginHelper(driver);
 
     @Given("^I navigate to twitter page$")

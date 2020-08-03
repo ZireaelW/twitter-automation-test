@@ -9,7 +9,7 @@ Feature: Login
     Then Login should be "<result>"
 
     Examples:
-      | username                 | password  | result  |
-      | 082139805022             | ririn1212 | Success |
-      | username2                | password2 | Failed  |
-      | ririn.nurmaica@gmail.com | password2 | Failed  |
+      | username         | password      | result  |
+      | 082139805022     | ririn1212     | Success |
+      | 082139805022     | dummyPassword | Failed  |
+      | unregisteredUser | dummyPassword | Failed  |
