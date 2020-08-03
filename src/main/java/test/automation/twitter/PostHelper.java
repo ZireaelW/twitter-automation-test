@@ -23,8 +23,7 @@ public class PostHelper {
 
         this.driver.findElement(By.xpath("//a[@data-testid=\"AppTabBar_Home_Link\"]")).click();
 
-        WebDriverWait wait2 = new WebDriverWait(this.driver, 10);
-        wait2.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@data-testid=\"tweetTextarea_0\"]")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@data-testid=\"tweetTextarea_0\"]")));
     }
 
     public void enter_tweet_text_as(String text) {
@@ -52,11 +51,12 @@ public class PostHelper {
     public void tweet_should_be_posted(String result) {
         WebDriverWait wait = new WebDriverWait(this.driver, 15);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@data-testid=\"tweetButtonInline\"]")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@data-testid=\"tweet\"]/div[2]/div[2]/div/div/span")));
 
         String postText = this.driver.findElement(By.xpath("//div[@data-testid=\"tweet\"]/div[2]/div[2]/div/div/span")).getText();
         if (result.equalsIgnoreCase("shouldn't")) {
             Assert.assertNotEquals(this.uuid, postText);
-        } else {
+        } else if(result.equalsIgnoreCase("shouldn")){
             Assert.assertEquals(this.uuid, postText);
         }
     }
